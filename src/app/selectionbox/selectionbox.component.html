@@ -1,0 +1,16 @@
+<form class="example-form" [formGroup]="loginform">
+<mat-select formControlName="years">
+    <mat-option *ngFor="let year of years" [value]="year.year">{{year.year}}</mat-option>
+</mat-select>
+<hr/>
+<mat-form-field>
+    <mat-select formControlName="months"  >
+        <mat-option *ngFor="let month of  monthsList " [value]= "month" >{{month}}</mat-option>
+    </mat-select>
+</mat-form-field>
+ <mat-form-field>
+   <mat-select formControlName="names"  (selectionChange)="getDates($event.value)" >
+     <mat-option *ngFor="let name of names[''+loginform.value.months]" [value]="name" >{{name}}</mat-option>
+   </mat-select>
+</mat-form-field>
+</form>

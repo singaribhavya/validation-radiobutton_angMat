@@ -1,0 +1,51 @@
+<mat-card>
+<form [formGroup]="radio">
+<label class="address">Address Proof :</label>
+  <mat-radio-group class="groupbutton" formControlName="radiobutton" (change)="radioChange($event.value)">
+    <mat-radio-button value="PanCard">PanCard</mat-radio-button>
+    <mat-radio-button value="AdharCard">AdharCard</mat-radio-button>
+    <mat-radio-button value="LicenceCard">DrivingLicence</mat-radio-button>
+  </mat-radio-group>
+<div *ngIf="pan" >
+    <mat-form-field>
+      <input matInput placeholder="Enter Your Name" formControlName="panname" required > 
+      <mat-error *ngIf="radio.controls.panname.invalid">pancardname required only letters</mat-error>
+    </mat-form-field>
+     <br/>
+    <mat-form-field>
+      <input matInput placeholder="Enter Your PanNumber" formControlName="panNo" maxlength="10"required >
+      <mat-error *ngIf="radio.controls.panNo.invalid">pancard required 10 characters</mat-error>
+     
+    </mat-form-field>
+</div>
+<div *ngIf="adhar" >
+    <mat-form-field>
+      <input matInput placeholder="Enter Your Name" formControlName="adharname" required>
+      <mat-error *ngIf="radio.controls.adharname.invalid">adharcardname required only letters</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <input matInput placeholder="Enter Your AdharNumber" formControlName="adharNo"maxlength="16" required>
+      <mat-error *ngIf="radio.controls.adharNo.invalid">adhar required ony 16digits number</mat-error>
+    </mat-form-field>
+</div>
+<div *ngIf="licence" >
+    <mat-form-field>
+      <input matInput placeholder="Enter Your Name" formControlName="licencename" required>
+      <mat-error *ngIf="radio.controls.licencename.invalid">DrivingLicence required ony letters</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <input matInput placeholder="Enter Your RegistraionNumber" formControlName="licenceNo" maxlength="10" required>
+      <mat-error *ngIf="radio.controls.licenceNo.invalid">DrivingLicence required ony 10 characters</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <input matInput  placeholder="Expiry Date"  formControlName="licenceExp" required>
+    </mat-form-field>
+</div><br/>
+<button  class="button" (click)="submit()" [disabled]="!radio.valid" mat-button [matMenuTriggerFor]="menu" >submit</button>
+</form>
+</mat-card>
+<br/>
+<mat-menu #menu=matMenu>{{num}} {{panno}} {{adhrname}} {{adhrnum}} {{licencename}} {{licencenum}}{{licenceexp}}</mat-menu>

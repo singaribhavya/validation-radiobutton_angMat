@@ -1,0 +1,57 @@
+<form [formGroup]="radio">
+  <label class="address">Address Details:</label>
+  <br/>
+    <mat-radio-group   aria-label="select radiobutton" formComtrolName="button" >
+      <mat-radio-button  value="pancard" #pan>Pan Card</mat-radio-button>
+      <mat-radio-button   value="adharcard" #adhr>Adhar Card</mat-radio-button>
+      <mat-radio-button   value="drivinglicence" #licence>Driving Licence</mat-radio-button>
+    </mat-radio-group>
+  <button class="select" [disabled]="!pandetails.valid && (!adhardetails.valid && !licencedetails.valid)">submit</button>
+</form>
+
+<div *ngIf="pan.checked">
+  <form [formGroup]="pandetails">
+    <mat-form-field>
+      <input matInput placeholder="Enter Your Name" formControlName='name'  required>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <input matInput placeholder="Enter Pancard Number" formControlName='panNo' required>
+    </mat-form-field>
+  </form>
+</div>
+
+
+
+<div *ngIf="adhr.checked">
+  <form [formGroup]="adhardetails">
+      <mat-form-field>
+      <input matInput placeholder="Enter Your Name" formControlName='adhrname'required>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <input matInput placeholder="Enter Adhar Number" formControlName='adhrNo' required>
+    </mat-form-field>
+  </form>
+</div>
+
+
+  <div *ngIf="licence.checked">
+    <form [formGroup]="licencedetails">
+      <mat-form-field>
+        <input matInput placeholder="Enter Your Name" formControlName='licencename'required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <input matInput placeholder="Enter Drivinglicence Number" formControlName='licenceNo' required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <input matInput placeholder="Enter registraion Number" formControlName='registraionNo' required>
+      </mat-form-field>
+    </form>
+ </div>   
+
+
+ 
+
